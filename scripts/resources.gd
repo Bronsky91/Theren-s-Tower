@@ -13,7 +13,7 @@ signal special_update
 var mana = 0
 var hp = 0
 var build = 0 # able to build one tower
-var special = 0.0 # Firewalls on all lanes for a few seconds
+var special = 0 # Firewalls on all lanes for a few seconds
 
 var score = 0
 

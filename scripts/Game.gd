@@ -13,7 +13,11 @@ var enemy_pool = [ice_zombie, zombie, big_zombie]
 
 const fireball = preload('res://scenes/FireBall.tscn')
 
+var can_special = false
+
 func _ready():
+	r.connect('special_update', self, '_on_special_update')
+	
 	r.hp_bar = hp_bar
 	r.mana_bar = mana_bar
 	r.build_bar = build_bar
@@ -28,6 +32,10 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed('left_click') and not g.cursor_busy:
 		cast_fireball()
+		
+func _on_special_update(new_special_value):
+	can_special = new_special_value == 100
+	$UI/SpecialButton.disabled = !can_special
 
 func spawn_enemy(point):
 	var new_enemy = enemy_pool[randi() % 3].instance()
@@ -44,12 +52,22 @@ func cast_fireball():
 		f.transform = $Map/TowerCast.transform
 
 func _on_SpawnTimer_timeout():
-	var n = randi() % (6 - 1) + 1
+	var n = randi() % 6 + 1
 	spawn_enemy(n)
-	# Gradually make timer faster each timeout += .01?
+
+func _on_DifficultyTimer_timeout():
+	if $SpawnTimer.wait_time > .1:
+		$SpawnTimer.wait_time -= .1
 
 func _on_ManaRegen_timeout():
 	r.add_mana(1)
 
 func _on_HealthRegen_timeout():
 	r.add_hp(1)
+
+func _on_SpecialButton_button_up():
+	r.subtract_special(100)
+	var flamewalls = get_tree().get_nodes_in_group('flamewalls')
+	for flamewall in flamewalls:
+		flamewall.burn()
+

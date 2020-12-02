@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FB_Passby_Whoosh_B.wav-3b56eab9a778b9278d8770765b5cab92.sample"
+
+[deps]
+
+source_file="res://assets/sound/effects/FB_Passby_Whoosh_B.wav"
+dest_files=[ "res://.import/FB_Passby_Whoosh_B.wav-3b56eab9a778b9278d8770765b5cab92.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

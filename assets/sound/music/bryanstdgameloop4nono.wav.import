@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bryanstdgameloop4nono.wav-bf2d02c144b3257a410b79d225e58fbc.sample"
+
+[deps]
+
+source_file="res://assets/sound/music/bryanstdgameloop4nono.wav"
+dest_files=[ "res://.import/bryanstdgameloop4nono.wav-bf2d02c144b3257a410b79d225e58fbc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

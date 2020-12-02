@@ -112,7 +112,7 @@ script = ExtResource( 3 )
 [node name="Projectile" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.666331, 0.62353 )
 frames = SubResource( 18 )
-frame = 4
+frame = 5
 speed_scale = 5.0
 playing = true
 
@@ -122,6 +122,10 @@ rotation = 1.5708
 shape = SubResource( 19 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
 [connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
 [connection signal="animation_finished" from="Projectile" to="." method="_on_Projectile_animation_finished"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

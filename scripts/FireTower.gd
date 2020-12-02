@@ -16,7 +16,7 @@ func _ready():
 func _on_build_update(new_build_value):
 	can_build = new_build_value == 100
 	$Build/Hammer.visible = can_build
-	
+
 func _physics_process(delta):
 	if !target and $Built.visible:
 		find_target()

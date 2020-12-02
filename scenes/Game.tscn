@@ -1,9 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/Terrain.png" type="Texture" id=2]
 [ext_resource path="res://assets/building_4.png" type="Texture" id=3]
 [ext_resource path="res://scenes/FireTower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sound/music/bryanstdgameloop4nono.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/spells/Icons/7-Fire-wall2.png" type="Texture" id=6]
+[ext_resource path="res://scripts/SpecialButton.gd" type="Script" id=7]
+[ext_resource path="res://scenes/FlameWall.tscn" type="PackedScene" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -332,6 +336,34 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="YSort" type="YSort" parent="Map"]
 
+[node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 359.098, 695.63 )
+frame = 0
+
+[node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 356.793, 267.189 )
+frame = 9
+
+[node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 213.882, 370.209 )
+frame = 9
+
+[node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 529.628, 436.46 )
+frame = 8
+
+[node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 361.336, 439.288 )
+frame = 8
+
+[node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 215.14, 551.217 )
+frame = 9
+
+[node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
+position = Vector2( 277.503, 695.319 )
+frame = 9
+
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( 301.121, 924.782 )
 z_index = 1
@@ -340,10 +372,6 @@ z_index = 1
 position = Vector2( 18.9224, -42.385 )
 scale = Vector2( 0.320306, 0.257721 )
 texture = ExtResource( 3 )
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
 
 [node name="UI" type="Control" parent="."]
 margin_right = 40.0
@@ -430,8 +458,21 @@ margin_right = 59.8492
 margin_bottom = -2.26343
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Special"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SpecialButton" type="Button" parent="UI"]
+margin_left = 64.2172
+margin_top = 819.364
+margin_right = 108.217
+margin_bottom = 857.364
+disabled = true
+icon = ExtResource( 6 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ManaRegen" type="Timer" parent="."]
 wait_time = 0.1
@@ -439,6 +480,23 @@ autostart = true
 
 [node name="HealthRegen" type="Timer" parent="."]
 wait_time = 0.5
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -8.0
+autoplay = true
+[connection signal="button_up" from="UI/SpecialButton" to="." method="_on_SpecialButton_button_up"]
+[connection signal="mouse_entered" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_entered"]
+[connection signal="mouse_exited" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_exited"]
 [connection signal="timeout" from="ManaRegen" to="." method="_on_ManaRegen_timeout"]
 [connection signal="timeout" from="HealthRegen" to="." method="_on_HealthRegen_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_DifficultyTimer_timeout"]
