@@ -1,0 +1,41 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/ice_zombie_run_anim_f1.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/ice_zombie_idle_anim_f3.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/ice_zombie_idle_anim_f2.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/ice_zombie_run_anim_f3.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemies/ice_zombie_idle_anim_f0.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemies/ice_zombie_run_anim_f2.png" type="Texture" id=7]
+[ext_resource path="res://assets/enemies/ice_zombie_idle_anim_f1.png" type="Texture" id=8]
+[ext_resource path="res://assets/enemies/ice_zombie_run_anim_f0.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 7.60436
+height = 10.4306
+
+[node name="IceZombie" type="AnimatedSprite"]
+position = Vector2( 0.0988007, -0.795266 )
+frames = SubResource( 1 )
+animation = "run"
+speed_scale = 1.5
+playing = true
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
