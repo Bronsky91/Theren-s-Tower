@@ -8,7 +8,7 @@ func _ready():
 	add_to_group('mobs')
 	var nav: Navigation2D = get_parent()
 	var start: Vector2 = nav.get_node('EnemyStart').position
-	var end: Vector2 = nav.get_node('TowerRight').position
+	var end: Vector2 = nav.get_node('TowerLeft').position
 	path = nav.get_simple_path(start, end)
 
 func _process(delta):

@@ -23,3 +23,6 @@ func cast_fireball():
 	var f = fireball.instance()
 	$Map.add_child(f)
 	f.transform = $Map/TowerCast.transform
+
+func _on_Timer_timeout():
+	spawn_enemy()
