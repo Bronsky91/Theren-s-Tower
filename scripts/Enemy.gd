@@ -1,14 +1,20 @@
 extends AnimatedSprite
 
-var speed = 50
+export (int) var speed
+export (int) var health
+
 var path : = PoolVector2Array()
+var start_num: int
+var nav: Navigation2D
+
+
+var end_points = ['Right', 'Left']
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group('mobs')
-	var nav: Navigation2D = get_parent()
-	var start: Vector2 = nav.get_node('EnemyStart').position
-	var end: Vector2 = nav.get_node('TowerLeft').position
+	var start: Vector2 = nav.get_node('EnemyStart'+str(start_num)).position
+	var end: Vector2 = nav.get_node('Tower' + end_points[randi() % (2)]).position
 	path = nav.get_simple_path(start, end)
 
 func _process(delta):

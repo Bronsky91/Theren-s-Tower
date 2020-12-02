@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Midas-touch.png-6b5406899e6537f1fd7d20d7a31bf0e1.stex"
+path="res://.import/fire-pillar.png-641492f8f04db06c22d8e955f02a52cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spells/3 Midas touch/Midas-touch.png"
-dest_files=[ "res://.import/Midas-touch.png-6b5406899e6537f1fd7d20d7a31bf0e1.stex" ]
+source_file="res://raw-art/0x72_DungeonTilesetII_v1.3.1/fire-pillar.png"
+dest_files=[ "res://.import/fire-pillar.png-641492f8f04db06c22d8e955f02a52cd.stex" ]
 
 [params]
 
