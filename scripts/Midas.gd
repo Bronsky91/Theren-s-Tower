@@ -34,7 +34,6 @@ func explode():
 	set_physics_process(false)
 	velocity = Vector2.ZERO
 	$AnimatedSprite.play()
-	$CollisionShape2D.disabled = true
 	yield($AnimatedSprite, "animation_finished")
 	queue_free()
 	

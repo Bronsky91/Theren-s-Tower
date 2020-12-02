@@ -19,7 +19,7 @@ height = 7.78164
 
 [node name="AnimatiedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 speed_scale = 1.5
 playing = true
 script = ExtResource( 5 )

@@ -1,5 +1,10 @@
 extends Node2D
 
+onready var hp_bar = $UI/HP
+onready var mana_bar = $UI/Mana
+onready var build_bar = $UI/Build
+onready var special_bar = $UI/Special
+
 const ice_zombie = preload('res://scenes/IceZombie.tscn')
 const zombie = preload('res://scenes/Zombie.tscn')
 const big_zombie = preload('res://scenes/BigZombie.tscn')
@@ -9,7 +14,12 @@ var enemy_pool = [ice_zombie, zombie, big_zombie]
 const fireball = preload('res://scenes/FireBall.tscn')
 
 func _ready():
-	pass
+	r.hp_bar = hp_bar
+	r.mana_bar = mana_bar
+	r.build_bar = build_bar
+	r.special_bar = special_bar
+	r.add_hp(100)
+	r.add_mana(100)
 	
 func _physics_process(delta):
 	# Where the spells are directed
@@ -27,10 +37,19 @@ func spawn_enemy(point):
 	$Map/YSort.add_child(new_enemy)
 
 func cast_fireball():
-	var f = fireball.instance()
-	$Map.add_child(f)
-	f.transform = $Map/TowerCast.transform
+	if(r.mana > 10):
+		r.subtract_mana(10)
+		var f = fireball.instance()
+		$Map.add_child(f)
+		f.transform = $Map/TowerCast.transform
 
 func _on_SpawnTimer_timeout():
 	var n = randi() % (6 - 1) + 1
 	spawn_enemy(n)
+	# Gradually make timer faster each timeout += .01?
+
+func _on_ManaRegen_timeout():
+	r.add_mana(1)
+
+func _on_HealthRegen_timeout():
+	r.add_hp(1)

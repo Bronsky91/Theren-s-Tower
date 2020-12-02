@@ -6,10 +6,16 @@ export var cooldown = 1
 
 var target = null
 var can_cast = true
+var hover = false
+var can_build = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	r.connect('build_update', self, '_on_build_update')
+	
+func _on_build_update(new_build_value):
+	can_build = new_build_value == 100
+	$Build/Hammer.visible = can_build
 	
 func _physics_process(delta):
 	if !target and $Built.visible:
@@ -18,7 +24,7 @@ func _physics_process(delta):
 		cast_midas()
 
 func _input(event):
-	if event.is_action_pressed('left_click') and $Build/Hover.visible:
+	if event.is_action_pressed('left_click') and hover and can_build:
 		build_tower()
 		
 func cast_midas():
@@ -49,6 +55,7 @@ func find_target():
 func build_tower():
 	$Build.hide()
 	build_animation()
+	r.subtract_build(100)
 	
 func build_animation():
 	$Building.show()
@@ -56,11 +63,12 @@ func build_animation():
 	
 func _on_FireTower_mouse_entered():
 	g.set_cursor_busy(true)
-	$Build/Hover.show()
+	hover = true
+	
 
 func _on_FireTower_mouse_exited():
 	g.set_cursor_busy(false)
-	$Build/Hover.hide()
+	hover = false
 
 func _on_Building_animation_finished():
 	# Finished Building

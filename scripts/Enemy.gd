@@ -7,11 +7,11 @@ var path : = PoolVector2Array()
 var start_num: int
 var nav: Navigation2D
 
-
 var end_points = ['Right', 'Left']
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	connect("tree_exiting", self, '_on_Enemy_tree_exiting')
 	add_to_group('mobs')
 	var start: Vector2 = nav.get_node('EnemyStart'+str(start_num)).position
 	var end: Vector2 = nav.get_node('Tower' + end_points[randi() % (2)]).position
@@ -34,3 +34,6 @@ func _process(delta):
 		# Update the distance to walk
 		distance_to_walk -= distance_to_next_point
 
+func _on_Enemy_tree_exiting():
+	r.add_build(5)
+	r.add_special(1)

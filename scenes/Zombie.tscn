@@ -18,9 +18,9 @@ animations = [ {
 radius = 4.30186
 height = 4.54774
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="Zombie" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 script = ExtResource( 5 )
