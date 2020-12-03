@@ -8,13 +8,14 @@ var target = null
 var can_cast = true
 var hover = false
 var can_build = false
+var built = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	r.connect('build_update', self, '_on_build_update')
 	
 func _on_build_update(new_build_value):
-	can_build = new_build_value == 100
+	can_build = new_build_value == 100 and not built
 	$Build/Hammer.visible = can_build
 
 func _physics_process(delta):
@@ -54,6 +55,7 @@ func find_target():
 
 func build_tower():
 	$Build.hide()
+	built = true
 	build_animation()
 	r.subtract_build(100)
 	

@@ -56,7 +56,6 @@ func _on_SpawnTimer_timeout():
 	spawn_enemy(n)
 
 func _on_DifficultyTimer_timeout():
-	print($SpawnTimer.wait_time)
 	if str($SpawnTimer.wait_time) > '0.1':
 		$SpawnTimer.wait_time -= 0.1
 

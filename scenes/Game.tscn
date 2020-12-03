@@ -481,11 +481,11 @@ autostart = true
 wait_time = 0.5
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
 
 [node name="DifficultyTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
