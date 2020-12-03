@@ -54,3 +54,4 @@ func _on_Projectile_animation_finished():
 func add_resources():
 	r.add_build(5)
 	r.add_special(1)
+	r.add_score(1)

@@ -4,11 +4,13 @@ var hp_bar: ProgressBar
 var mana_bar: ProgressBar
 var build_bar: ProgressBar
 var special_bar: ProgressBar
+var score_label: Label
 
 signal hp_update
 signal mana_update
 signal build_update
 signal special_update
+signal score_update
 
 var mana = 0
 var hp = 0
@@ -16,6 +18,11 @@ var build = 0 # able to build one tower
 var special = 0 # Firewalls on all lanes for a few seconds
 
 var score = 0
+
+func add_score(num: int):
+	score += num
+	score_label.text = "Score: " + str(score)
+	emit_signal("score_update", score)
 
 func add_hp(num: int):
 	if is_at_or_below_cap(hp, num):

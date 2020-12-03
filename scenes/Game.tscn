@@ -344,37 +344,38 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 359.098, 695.63 )
+frame = 0
 
 [node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 356.793, 267.189 )
-frame = 8
+frame = 2
 
 [node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 213.882, 370.209 )
-frame = 8
+frame = 2
 
 [node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 529.628, 436.46 )
-frame = 7
+frame = 1
 
 [node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 361.336, 439.288 )
-frame = 7
+frame = 1
 
 [node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 215.14, 551.217 )
-frame = 8
+frame = 2
 
 [node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 277.503, 695.319 )
-frame = 8
+frame = 2
 
 [node name="Shield" parent="Map" instance=ExtResource( 9 )]
 
 [node name="LightingRight" parent="Map" instance=ExtResource( 10 )]
 visible = false
 position = Vector2( 362.961, 928.907 )
-frame = 0
+frame = 3
 playing = true
 
 [node name="LightingLeft" parent="Map" instance=ExtResource( 10 )]
@@ -515,6 +516,32 @@ margin_right = 533.0
 margin_bottom = 843.5
 icon = ExtResource( 14 )
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Label" parent="UI"]
+visible = false
+anchor_right = 2.875
+anchor_bottom = 1.2
+margin_left = 231.281
+margin_top = 462.877
+margin_right = 229.281
+margin_bottom = 434.877
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Game Over"
+align = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="UI"]
+anchor_right = 0.5
+anchor_bottom = 0.35
+margin_left = 471.837
+margin_top = 693.127
+margin_right = 543.837
+margin_bottom = 693.127
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: "
 __meta__ = {
 "_edit_use_anchors_": false
 }

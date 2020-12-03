@@ -46,6 +46,7 @@ func _on_Midas_area_entered(area):
 
 func add_resources():
 	r.add_special(1)
+	r.add_score(1)
 
 func hit_target(target):
 	var killed = target.hit(damage)

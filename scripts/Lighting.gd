@@ -11,10 +11,12 @@ func _ready():
 	add_to_group('lighting')
 
 func cast():
+	button.disabled = true
 	show()
 	play()
 
 func done():
+	button.disabled = false
 	hide()
 	stop()
 
@@ -27,6 +29,7 @@ func hit_target(target):
 func add_resources():
 	r.add_build(5)
 	r.add_special(1)
+	r.add_score(1)
 
 func _on_Lighting_animation_finished():
 	var areas = $Area2D.get_overlapping_areas()

@@ -37,6 +37,7 @@ func _on_Lifetime_timeout():
 	
 func add_resources():
 	r.add_build(5)
+	r.add_score(1)
 
 func hit_target(target):
 	var killed = target.hit(damage)

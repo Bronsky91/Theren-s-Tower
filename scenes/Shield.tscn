@@ -59,6 +59,7 @@ frames = SubResource( 9 )
 frame = 4
 speed_scale = 2.0
 script = ExtResource( 2 )
+cost = 20
 
 [node name="ShieldTimer" type="Timer" parent="."]
 wait_time = 5.0

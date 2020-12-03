@@ -4,6 +4,7 @@ onready var hp_bar = $UI/HP
 onready var mana_bar = $UI/Mana
 onready var build_bar = $UI/Build
 onready var special_bar = $UI/Special
+onready var score_label = $UI/Score
 
 const ice_zombie = preload('res://scenes/IceZombie.tscn')
 const zombie = preload('res://scenes/Zombie.tscn')
@@ -18,11 +19,13 @@ var shield_on = false
 
 func _ready():
 	r.connect('special_update', self, '_on_special_update')
+	r.connect('hp_update', self, '_on_hp_update')
 	
 	r.hp_bar = hp_bar
 	r.mana_bar = mana_bar
 	r.build_bar = build_bar
 	r.special_bar = special_bar
+	r.score_label = score_label
 	r.add_hp(100)
 	r.add_mana(100)
 	
@@ -37,6 +40,11 @@ func _input(event):
 func _on_special_update(new_special_value):
 	can_special = new_special_value == 100
 	$UI/SpecialButton.disabled = !can_special
+	
+func _on_hp_update(new_hp_value):
+	if new_hp_value == 0:
+		get_tree().paused = true
+		$UI/GameOver.show()
 
 func spawn_enemy(point):
 	var new_enemy = enemy_pool[randi() % 3].instance()
@@ -80,5 +88,3 @@ func _on_LightingButton_button_up():
 		r.subtract_mana(lighting[0].cost)
 		for l in lighting:
 			l.cast()
-
-
