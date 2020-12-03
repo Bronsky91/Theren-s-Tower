@@ -344,42 +344,43 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 359.098, 695.63 )
-frame = 7
 
 [node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 356.793, 267.189 )
-frame = 6
+frame = 8
 
 [node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 213.882, 370.209 )
-frame = 6
+frame = 8
 
 [node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 529.628, 436.46 )
-frame = 5
+frame = 7
 
 [node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 361.336, 439.288 )
-frame = 5
+frame = 7
 
 [node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 215.14, 551.217 )
-frame = 6
+frame = 8
 
 [node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 277.503, 695.319 )
-frame = 6
+frame = 8
 
 [node name="Shield" parent="Map" instance=ExtResource( 9 )]
 
 [node name="LightingRight" parent="Map" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 362.961, 928.907 )
 frame = 0
-playing = false
+playing = true
 
 [node name="LightingLeft" parent="Map" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 278.21, 929.606 )
-frame = 0
-playing = false
+frame = 6
 flip_h = true
 
 [node name="Tower" type="Node2D" parent="."]

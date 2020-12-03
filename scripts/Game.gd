@@ -75,6 +75,10 @@ func _on_SpecialButton_button_up():
 		flamewall.burn()
 
 func _on_LightingButton_button_up():
-	pass # Replace with function body.
+	var lighting = get_tree().get_nodes_in_group('lighting')
+	if r.mana >= lighting[0].cost:
+		r.subtract_mana(lighting[0].cost)
+		for l in lighting:
+			l.cast()
 
 
