@@ -12,6 +12,7 @@ func _physics_process(delta):
 func _on_FireBall_area_entered(area):
 	var target = area.get_parent()
 	if target.is_in_group("mobs"):
+		add_resources()
 		play_explode_sound()
 		$Projectile.animation = 'hit'
 		speed = 0
@@ -40,3 +41,7 @@ func _on_Projectile_animation_finished():
 	if $Projectile.animation == 'hit':
 		$Projectile.stop()
 		$Projectile.hide()
+		
+func add_resources():
+	r.add_build(5)
+	r.add_special(1)

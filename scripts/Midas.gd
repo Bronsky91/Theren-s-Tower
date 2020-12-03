@@ -36,10 +36,13 @@ func explode():
 	$AnimatedSprite.play()
 	yield($AnimatedSprite, "animation_finished")
 	queue_free()
-	
 
 func _on_Midas_area_entered(area):
 	var t = area.get_parent()
 	if t.is_in_group('mobs'):
+		add_resources()
 		t.queue_free()
 		explode()
+
+func add_resources():
+	r.add_special(1)

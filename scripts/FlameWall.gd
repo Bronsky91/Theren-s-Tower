@@ -17,6 +17,7 @@ func _on_Area2D_area_entered(area):
 	var t = area.get_parent()
 	if t.is_in_group('mobs'):
 		play_burn_sound()
+		add_resources()
 		t.queue_free()
 
 func play_burn_sound():
@@ -32,3 +33,6 @@ func _on_burn_sound_finished(player):
 
 func _on_Lifetime_timeout():
 	douse()
+	
+func add_resources():
+	r.add_build(5)

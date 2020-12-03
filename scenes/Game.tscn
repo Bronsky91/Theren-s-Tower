@@ -338,31 +338,30 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 359.098, 695.63 )
-frame = 5
 
 [node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 356.793, 267.189 )
-frame = 4
+frame = 0
 
 [node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 213.882, 370.209 )
-frame = 4
+frame = 0
 
 [node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 529.628, 436.46 )
-frame = 3
+frame = 9
 
 [node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 361.336, 439.288 )
-frame = 3
+frame = 9
 
 [node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 215.14, 551.217 )
-frame = 4
+frame = 0
 
 [node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 277.503, 695.319 )
-frame = 4
+frame = 0
 
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( 301.121, 924.782 )
@@ -492,6 +491,7 @@ autostart = true
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -8.0
+autoplay = true
 [connection signal="button_up" from="UI/SpecialButton" to="." method="_on_SpecialButton_button_up"]
 [connection signal="mouse_entered" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_entered"]
 [connection signal="mouse_exited" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_exited"]

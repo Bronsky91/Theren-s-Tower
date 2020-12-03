@@ -14,7 +14,7 @@ var attacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("tree_exiting", self, '_on_Enemy_tree_exiting')
+	# connect("tree_exiting", self, '_on_Enemy_tree_exiting')
 	add_to_group('mobs')
 	var start: Vector2 = nav.get_node('EnemyStart'+str(start_num)).position
 	var end: Vector2 = nav.get_node('Tower' + end_points[randi() % (2)]).position
@@ -55,7 +55,3 @@ func attack():
 func _on_attack_timer_timeout():
 	attack()
 
-func _on_Enemy_tree_exiting():
-	# TODO: Change to only spell attacks 
-	r.add_build(5)
-	r.add_special(1)
