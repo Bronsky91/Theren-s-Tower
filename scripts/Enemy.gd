@@ -2,12 +2,15 @@ extends AnimatedSprite
 
 export (int) var speed
 export (int) var health
+export (int) var power
 
 var path : = PoolVector2Array()
 var start_num: int
 var nav: Navigation2D
 
 var end_points = ['Right', 'Left']
+
+var attacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +36,26 @@ func _process(delta):
 			path.remove(0)
 		# Update the distance to walk
 		distance_to_walk -= distance_to_next_point
+	
+	if path.size() == 0 and not attacking:
+		attacking = true
+		start_attack()
+
+
+func start_attack():
+	var attack_timer = Timer.new()
+	add_child(attack_timer)
+	attack_timer.connect('timeout', self, '_on_attack_timer_timeout')
+	attack_timer.wait_time = 1
+	attack_timer.start()
+
+func attack():
+	r.subtract_hp(power)
+
+func _on_attack_timer_timeout():
+	attack()
 
 func _on_Enemy_tree_exiting():
+	# TODO: Change to only spell attacks 
 	r.add_build(5)
 	r.add_special(1)

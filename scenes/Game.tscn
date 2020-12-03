@@ -308,10 +308,10 @@ position = Vector2( 13.5245, 358.882 )
 position = Vector2( 12.402, 536.231 )
 
 [node name="TowerLeft" type="Position2D" parent="Map"]
-position = Vector2( 279.552, 935.727 )
+position = Vector2( 285.498, 937.511 )
 
 [node name="TowerRight" type="Position2D" parent="Map"]
-position = Vector2( 340.796, 937.587 )
+position = Vector2( 352.688, 938.182 )
 
 [node name="TowerCast" type="Position2D" parent="Map"]
 position = Vector2( 309.296, 868.349 )
@@ -338,30 +338,31 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 359.098, 695.63 )
+frame = 5
 
 [node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 356.793, 267.189 )
-frame = 0
+frame = 4
 
 [node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 213.882, 370.209 )
-frame = 0
+frame = 4
 
 [node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 529.628, 436.46 )
-frame = 9
+frame = 3
 
 [node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 361.336, 439.288 )
-frame = 9
+frame = 3
 
 [node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 215.14, 551.217 )
-frame = 0
+frame = 4
 
 [node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 277.503, 695.319 )
-frame = 0
+frame = 4
 
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( 301.121, 924.782 )
@@ -421,10 +422,10 @@ __meta__ = {
 }
 
 [node name="Build" type="ProgressBar" parent="UI"]
-margin_left = 46.6662
-margin_top = 728.359
-margin_right = 126.666
-margin_bottom = 748.359
+margin_left = 47.4154
+margin_top = 736.6
+margin_right = 127.415
+margin_bottom = 756.6
 custom_styles/fg = SubResource( 8 )
 custom_styles/bg = SubResource( 9 )
 __meta__ = {
@@ -491,7 +492,6 @@ autostart = true
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -8.0
-autoplay = true
 [connection signal="button_up" from="UI/SpecialButton" to="." method="_on_SpecialButton_button_up"]
 [connection signal="mouse_entered" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_entered"]
 [connection signal="mouse_exited" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_exited"]

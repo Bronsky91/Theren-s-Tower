@@ -31,11 +31,12 @@ height = 6.33101
 position = Vector2( 0.0988007, -0.795266 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 1
+frame = 2
 speed_scale = 1.5
 playing = true
 script = ExtResource( 1 )
 speed = 70
+power = 2
 
 [node name="Area2D" type="Area2D" parent="."]
 
