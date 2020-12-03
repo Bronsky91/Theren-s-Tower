@@ -14,7 +14,6 @@ var attacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# connect("tree_exiting", self, '_on_Enemy_tree_exiting')
 	add_to_group('mobs')
 	var start: Vector2 = nav.get_node('EnemyStart'+str(start_num)).position
 	var end: Vector2 = nav.get_node('Tower' + end_points[randi() % (2)]).position
@@ -41,7 +40,6 @@ func _process(delta):
 		attacking = true
 		start_attack()
 
-
 func start_attack():
 	var attack_timer = Timer.new()
 	add_child(attack_timer)
@@ -50,8 +48,13 @@ func start_attack():
 	attack_timer.start()
 
 func attack():
-	r.subtract_hp(power)
+	if not get_node("/root/Game").shield_on:
+		r.subtract_hp(power)
 
 func _on_attack_timer_timeout():
 	attack()
-
+	
+func hit(amount):
+	health -= amount
+	# Return if killed or not
+	return health <= 0

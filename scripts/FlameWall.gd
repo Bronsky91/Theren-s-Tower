@@ -1,5 +1,7 @@
 extends AnimatedSprite
 
+export (int) var damage = 75
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group('flamewalls')
@@ -17,8 +19,7 @@ func _on_Area2D_area_entered(area):
 	var t = area.get_parent()
 	if t.is_in_group('mobs'):
 		play_burn_sound()
-		add_resources()
-		t.queue_free()
+		hit_target(t)
 
 func play_burn_sound():
 	var player = AudioStreamPlayer.new()
@@ -36,3 +37,9 @@ func _on_Lifetime_timeout():
 	
 func add_resources():
 	r.add_build(5)
+
+func hit_target(target):
+	var killed = target.hit(damage)
+	if killed:
+		target.queue_free()
+		add_resources()

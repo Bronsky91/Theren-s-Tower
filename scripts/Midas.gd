@@ -2,6 +2,7 @@ extends Area2D
 
 export var speed = 200
 export var steer_force = 70.0
+export (int) var damage = 50
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -31,8 +32,8 @@ func _on_Lifetime_timeout():
 	explode()
 
 func explode():
-	set_physics_process(false)
-	velocity = Vector2.ZERO
+	speed = 0
+	$CollisionShape2D.call_deferred('set_disabled', true)
 	$AnimatedSprite.play()
 	yield($AnimatedSprite, "animation_finished")
 	queue_free()
@@ -40,9 +41,14 @@ func explode():
 func _on_Midas_area_entered(area):
 	var t = area.get_parent()
 	if t.is_in_group('mobs'):
-		add_resources()
-		t.queue_free()
+		hit_target(t)
 		explode()
 
 func add_resources():
 	r.add_special(1)
+
+func hit_target(target):
+	var killed = target.hit(damage)
+	if killed:
+		target.queue_free()
+		add_resources()

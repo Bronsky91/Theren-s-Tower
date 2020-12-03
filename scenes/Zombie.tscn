@@ -20,11 +20,12 @@ height = 4.54774
 
 [node name="Zombie" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 3
+frame = 2
 speed_scale = 1.5
 playing = true
 script = ExtResource( 5 )
 speed = 50
+health = 50
 power = 1
 
 [node name="Area2D" type="Area2D" parent="."]

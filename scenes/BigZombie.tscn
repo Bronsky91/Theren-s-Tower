@@ -19,11 +19,11 @@ height = 7.78164
 
 [node name="AnimatiedSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 2
 speed_scale = 1.5
 playing = true
 script = ExtResource( 5 )
 speed = 30
+health = 75
 power = 5
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,6 +1,9 @@
 extends Area2D
 
 export (int) var speed = 200
+export (int) var damage = 30
+export (int) var cost = 5
+
 var target_pos: Vector2
 
 func _ready():
@@ -12,12 +15,18 @@ func _physics_process(delta):
 func _on_FireBall_area_entered(area):
 	var target = area.get_parent()
 	if target.is_in_group("mobs"):
-		add_resources()
-		play_explode_sound()
-		$Projectile.animation = 'hit'
+		hit_target(target)
 		speed = 0
-		target.queue_free()
+		$Projectile.animation = 'hit'
+		$CollisionShape2D.call_deferred('set_disabled', true)
+		play_explode_sound()
 		
+func hit_target(target):
+	var killed = target.hit(damage)
+	if killed:
+		target.queue_free()
+		add_resources()
+
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 

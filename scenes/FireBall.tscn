@@ -112,7 +112,7 @@ script = ExtResource( 3 )
 [node name="Projectile" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.666331, 0.62353 )
 frames = SubResource( 18 )
-frame = 5
+frame = 7
 speed_scale = 5.0
 playing = true
 

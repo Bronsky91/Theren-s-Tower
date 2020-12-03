@@ -14,6 +14,7 @@ var enemy_pool = [ice_zombie, zombie, big_zombie]
 const fireball = preload('res://scenes/FireBall.tscn')
 
 var can_special = false
+var shield_on = false
 
 func _ready():
 	r.connect('special_update', self, '_on_special_update')
@@ -45,11 +46,13 @@ func spawn_enemy(point):
 	$Map/YSort.add_child(new_enemy)
 
 func cast_fireball():
-	if(r.mana > 10):
-		r.subtract_mana(10)
-		var f = fireball.instance()
+	var f = fireball.instance()
+	if(r.mana > f.cost):
+		r.subtract_mana(f.cost)
 		$Map.add_child(f)
 		f.transform = $Map/TowerCast.transform
+	else:
+		f.queue_free()
 
 func _on_SpawnTimer_timeout():
 	var n = randi() % 6 + 1
@@ -70,4 +73,8 @@ func _on_SpecialButton_button_up():
 	var flamewalls = get_tree().get_nodes_in_group('flamewalls')
 	for flamewall in flamewalls:
 		flamewall.burn()
+
+func _on_LightingButton_button_up():
+	pass # Replace with function body.
+
 
