@@ -338,31 +338,30 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 359.098, 695.63 )
-frame = 0
 
 [node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 356.793, 267.189 )
-frame = 9
+frame = 0
 
 [node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 213.882, 370.209 )
-frame = 9
+frame = 0
 
 [node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 529.628, 436.46 )
-frame = 8
+frame = 9
 
 [node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 361.336, 439.288 )
-frame = 8
+frame = 9
 
 [node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 215.14, 551.217 )
-frame = 9
+frame = 0
 
 [node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 277.503, 695.319 )
-frame = 9
+frame = 0
 
 [node name="Tower" type="Node2D" parent="."]
 position = Vector2( 301.121, 924.782 )
@@ -482,11 +481,11 @@ autostart = true
 wait_time = 0.5
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 autostart = true
 
 [node name="DifficultyTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
