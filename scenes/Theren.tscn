@@ -1,0 +1,46 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/player/wizzard_m_idle_anim_f0.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/wizzard_m_idle_anim_f1.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/wizzard_m_idle_anim_f2.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/wizzard_m_hit_anim_f0.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/wizzard_m_idle_anim_f3.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/wizzard_m_run_anim_f0.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/wizzard_m_run_anim_f1.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/wizzard_m_run_anim_f2.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/wizzard_m_run_anim_f3.png" type="Texture" id=9]
+[ext_resource path="res://scripts/Theren.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.5738
+height = 7.17004
+
+[node name="Theren" type="KinematicBody2D"]
+script = ExtResource( 10 )
+speed = 150
+health = 100
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.686081, -5.89679 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 3
+speed_scale = 2.0
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 7.62939e-06, 0.420441 )
+shape = SubResource( 2 )

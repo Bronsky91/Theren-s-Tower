@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiles/Terrain.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scripts/LightingButton.gd" type="Script" id=12]
 [ext_resource path="res://assets/spells/Icons/8-Shield2.png" type="Texture" id=13]
 [ext_resource path="res://assets/spells/Icons/1-Lightning2.png" type="Texture" id=14]
+[ext_resource path="res://scenes/Theren.tscn" type="PackedScene" id=15]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -342,40 +343,43 @@ position = Vector2( 272.501, 591.573 )
 
 [node name="YSort" type="YSort" parent="Map"]
 
+[node name="Theren" parent="Map/YSort" instance=ExtResource( 15 )]
+position = Vector2( 70, 225 )
+
 [node name="FlameWall" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 359.098, 695.63 )
-frame = 0
+frame = 1
 
 [node name="FlameWall2" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 356.793, 267.189 )
-frame = 2
+frame = 3
 
 [node name="FlameWall3" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 213.882, 370.209 )
-frame = 2
+frame = 3
 
 [node name="FlameWall4" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 529.628, 436.46 )
-frame = 1
+frame = 2
 
 [node name="FlameWall5" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 361.336, 439.288 )
-frame = 1
+frame = 2
 
 [node name="FlameWall6" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 215.14, 551.217 )
-frame = 2
+frame = 3
 
 [node name="FlameWall7" parent="Map" instance=ExtResource( 8 )]
 position = Vector2( 277.503, 695.319 )
-frame = 2
+frame = 3
 
 [node name="Shield" parent="Map" instance=ExtResource( 9 )]
 
 [node name="LightingRight" parent="Map" instance=ExtResource( 10 )]
 visible = false
 position = Vector2( 362.961, 928.907 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="LightingLeft" parent="Map" instance=ExtResource( 10 )]
@@ -392,6 +396,16 @@ z_index = 1
 position = Vector2( 18.9224, -42.385 )
 scale = Vector2( 0.320306, 0.257721 )
 texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Tower"]
+margin_left = 14.6833
+margin_top = -77.4207
+margin_right = 54.6833
+margin_bottom = -63.4207
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UI" type="Control" parent="."]
 margin_right = 40.0
@@ -494,6 +508,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="UI/SpecialButton"]
+margin_left = 17.0
+margin_top = 15.0
+margin_right = 37.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ShieldButton" type="Button" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 0.25
@@ -507,6 +532,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="UI/ShieldButton"]
+margin_left = 18.0
+margin_top = 13.0
+margin_right = 29.0
+margin_bottom = 27.0
+text = "3"
+
 [node name="LightingButton" type="Button" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 0.25
@@ -519,6 +551,13 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="UI/LightingButton"]
+margin_left = 16.0181
+margin_top = 12.681
+margin_right = 56.0181
+margin_bottom = 26.681
+text = "4"
 
 [node name="GameOver" type="Label" parent="UI"]
 visible = false
@@ -563,7 +602,8 @@ autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -8.0
+volume_db = -25.0
+autoplay = true
 [connection signal="button_up" from="UI/SpecialButton" to="." method="_on_SpecialButton_button_up"]
 [connection signal="mouse_entered" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_entered"]
 [connection signal="mouse_exited" from="UI/SpecialButton" to="UI/SpecialButton" method="_on_SpecialButton_mouse_exited"]

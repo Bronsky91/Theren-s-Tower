@@ -9,6 +9,7 @@ onready var score_label = $UI/Score
 const ice_zombie = preload('res://scenes/IceZombie.tscn')
 const zombie = preload('res://scenes/Zombie.tscn')
 const big_zombie = preload('res://scenes/BigZombie.tscn')
+const boss_orc = preload('res://scenes/BossOrc.tscn')
 
 var enemy_pool = [ice_zombie, zombie, big_zombie]
 
@@ -16,6 +17,8 @@ const fireball = preload('res://scenes/FireBall.tscn')
 
 var can_special = false
 var shield_on = false
+
+var boss_countdown = 0
 
 func _ready():
 	r.connect('special_update', self, '_on_special_update')
@@ -34,8 +37,14 @@ func _physics_process(delta):
 	$Map/TowerCast.look_at(get_global_mouse_position())
 	
 func _input(event):
-	if event.is_action_pressed('left_click') and not g.cursor_busy:
+	if event.is_action_pressed('left_click') or event.is_action_pressed('fireball') and not g.cursor_busy:
 		cast_fireball()
+	if event.is_action_pressed('special') and not $UI/SpecialButton.disabled:
+		$UI/SpecialButton.emit_signal("button_up")
+	if event.is_action_pressed("shield") and not $UI/ShieldButton.disabled:
+		$UI/ShieldButton.emit_signal("button_up")
+	if event.is_action_pressed("lightning") and not $UI/LightingButton.disabled:
+		$UI/LightingButton.emit_signal("button_up")
 		
 func _on_special_update(new_special_value):
 	can_special = new_special_value == 100
@@ -67,8 +76,18 @@ func _on_SpawnTimer_timeout():
 	spawn_enemy(n)
 
 func _on_DifficultyTimer_timeout():
+	boss_countdown += 1
+	if boss_countdown == 3:
+		spawn_boss()
 	if str($SpawnTimer.wait_time) > '0.1':
 		$SpawnTimer.wait_time -= 0.1
+	
+func spawn_boss():
+	var new_boss = boss_orc.instance()
+	new_boss.nav = $Map
+	new_boss.start_num = 2
+	new_boss.position = get_node("Map/EnemyStart2").position
+	$Map/YSort.add_child(new_boss)
 
 func _on_ManaRegen_timeout():
 	r.add_mana(1)
@@ -77,10 +96,11 @@ func _on_HealthRegen_timeout():
 	r.add_hp(1)
 
 func _on_SpecialButton_button_up():
-	r.subtract_special(100)
-	var flamewalls = get_tree().get_nodes_in_group('flamewalls')
-	for flamewall in flamewalls:
-		flamewall.burn()
+	if r.special >= 100:
+		r.subtract_special(100)
+		var flamewalls = get_tree().get_nodes_in_group('flamewalls')
+		for flamewall in flamewalls:
+			flamewall.burn()
 
 func _on_LightingButton_button_up():
 	var lighting = get_tree().get_nodes_in_group('lighting')

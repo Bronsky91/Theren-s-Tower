@@ -58,3 +58,7 @@ func hit(amount):
 	health -= amount
 	# Return if killed or not
 	return health <= 0
+
+
+func _on_BossOrc_tree_exiting():
+	r.add_score(1000)
